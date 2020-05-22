@@ -54,15 +54,15 @@ export const IndexPageTemplate = ({ mainImage }) => {
       <Parallax
         image={
           <PreviewSafeImage
-            position={[80, 100]}
+            position={[mainImage.desktop.xPos, mainImage.desktop.yPos]}
             alt={mainImage.description}
-            image={mainImage.desktop}
+            image={mainImage.desktop.image}
           />
         }
         mobileImage={
           <PreviewSafeImage
-            image={mainImage.mobile}
-            position={[70, 100]}
+            image={mainImage.mobile.image}
+            position={[mainImage.mobile.xPos, mainImage.mobile.yPos]}
             alt={mainImage.description}
           />
         }
@@ -137,12 +137,24 @@ export const PageQuery = graphql`
           desktop {
             xPos
             yPos
-            image
+            image {
+              childImageSharp {
+                fluid(maxWidth: 2000) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           mobile {
             xPos
             yPos
-            image
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1500) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
