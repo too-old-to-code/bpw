@@ -1,7 +1,11 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+require("normalize.css")
+require("typeface-teko")
+const { theme } = require("./src/theme")
+const { setConfiguration } = require("react-grid-system")
 
-// You can delete this file if you're not using it
+setConfiguration({
+  gridColumns: 12,
+  breakpoints: theme.bpoints,
+})
+
+console.log(theme)

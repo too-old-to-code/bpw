@@ -1,0 +1,33 @@
+/*$hamburger-padding-x: 16px;
+$hamburger-padding-y: 20px;
+$hamburger-layer-width: 23px;
+$hamburger-layer-height: 2px;
+$hamburger-layer-spacing: 4px;
+$hamburger-layer-color: white;
+$hamburger-layer-border-radius: 4px;
+$hamburger-hover-opacity: 0.7;*/
+
+/*bigger version*/
+$hamburger-padding-x: 20px;
+$hamburger-padding-y: 18px;
+$hamburger-layer-width: 37px;
+$hamburger-layer-height: 3px;
+$hamburger-layer-spacing: 8px;
+$hamburger-layer-color: white;
+$hamburger-layer-border-radius: 0px;
+$hamburger-hover-opacity: 0.7;
+
+@import "hamburgers/_sass/hamburgers/hamburgers.scss";
+
+.hamburger {
+  /*position: absolute;*/
+  /*z-index: 20;*/
+  top: 0;
+  outline: none;
+  display: flex;
+
+  &.hamburger--custom {
+    .hamburger-inner {
+    }
+  }
+}
