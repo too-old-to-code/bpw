@@ -1,4 +1,5 @@
 ---
+templateKey: index-page
 mainImage:
   desktop:
     xPos: 70

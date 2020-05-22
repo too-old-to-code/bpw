@@ -135,18 +135,14 @@ export const PageQuery = graphql`
         mainImage {
           description
           desktop {
-            childImageSharp {
-              fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+            xPos
+            yPos
+            image
           }
           mobile {
-            childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+            xPos
+            yPos
+            image
           }
         }
       }
