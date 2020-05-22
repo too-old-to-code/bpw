@@ -14,7 +14,7 @@ module.exports = {
       // This adds the images added through the cms
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/static/img`,
+        path: `${__dirname}/static/img/`,
         name: "uploads",
       },
     },
@@ -23,14 +23,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     // This is where the markdown pages will be.
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/src/pages/`,
         name: "pages",
       },
     },
