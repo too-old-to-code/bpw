@@ -38,8 +38,26 @@ collections:
                     fields:
                       [
                         { label: Image, name: image, widget: image },
-                        { label: X-position, name: xPos, widget: number },
-                        { label: Y-position, name: yPos, widget: number },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
                       ],
                   },
                   {
@@ -49,8 +67,26 @@ collections:
                     fields:
                       [
                         { label: Image, name: image, widget: image },
-                        { label: X-position, name: xPos, widget: number },
-                        { label: Y-position, name: yPos, widget: number },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
                       ],
                   },
                 ],
