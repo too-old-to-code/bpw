@@ -6,4 +6,10 @@ mainImage:
   description: Business people talking
   desktop: /img/main-image.jpg
   mobile: /img/main-image-mobile.jpg
+  desktopImageCenter:
+    xPos: "70"
+    yPos: "100"
+  mobileImageCenter:
+    xPos: "50"
+    yPos: "50"
 ---
