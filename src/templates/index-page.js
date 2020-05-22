@@ -16,6 +16,49 @@ const InnerContainer = styled.div`
   }
 `
 
+const PaddedBox = styled.div`
+  padding: ${({ vertical = 0, horizontal = 0 }) =>
+    `${vertical}px ${horizontal}px`};
+  margin: 0 auto;
+  max-width: ${({ maxWidth = "inherit" }) => maxWidth};
+`
+
+const Heading = styled.h3`
+  text-align: center;
+  color: ${({ theme }) => theme?.textbox?.headingColor};
+`
+
+const Paragraph = styled.p`
+  color: ${({ theme }) => theme?.textbox?.textColor};
+  line-height: ${({ theme }) => theme?.textbox?.lineHeight};
+`
+
+const TextBox = () => {
+  return (
+    <PaddedBox maxWidth="600px">
+      <Heading>This is a heading</Heading>
+      <Paragraph>
+        As one of the most respected and trusted independent insurance brokers
+        based in Newport, South Wales we have been providing our clients with
+        the highest levels of service and expertise for over 35 years. As
+        commercial specialists, whatever your business, our highly trained team
+        will get it fully covered. We provide a personal service with the same
+        consultant working with you throughout the entire process. We search the
+        market for the best premiums to ensure you get the most out of your
+        insurance.
+      </Paragraph>
+      <Paragraph>
+        As specialists in commercial insurance we can offer the care and
+        technical expertise your business needs to ensure it is always fully
+        covered. Our extensive relationships with the major insurers, as well as
+        the more specialist providers, means that we can provide you with the
+        highest possible levels of cover at the most competitive prices. We also
+        provide for the personal insurance needs of our commercial clients.
+      </Paragraph>
+    </PaddedBox>
+  )
+}
+
 const ParallaxText = () => {
   return (
     <ParallaxImageText>
@@ -49,21 +92,22 @@ const ParallaxText = () => {
 }
 
 export const IndexPageTemplate = ({ mainImage }) => {
+  const { mobile, desktop, description } = mainImage
   return (
     <React.Fragment>
       <Parallax
         image={
           <PreviewSafeImage
-            position={[mainImage.desktop.xPos, mainImage.desktop.yPos]}
-            alt={mainImage.description}
-            image={mainImage.desktop.image}
+            position={[desktop.xPos, desktop.yPos]}
+            alt={description}
+            image={desktop.image}
           />
         }
         mobileImage={
           <PreviewSafeImage
-            image={mainImage.mobile.image}
-            position={[mainImage.mobile.xPos, mainImage.mobile.yPos]}
-            alt={mainImage.description}
+            image={mobile.image}
+            position={[mobile.xPos, mobile.yPos]}
+            alt={description}
           />
         }
         height="90vh"
@@ -81,6 +125,24 @@ export const IndexPageTemplate = ({ mainImage }) => {
           </Container>
         }
       />
+      <Container>
+        <PaddedBox vertical="40">
+          <Row>
+            <Col md={8} sm={6} xs={12}>
+              <TextBox />
+            </Col>
+            <Col md={4} sm={6} xs={12}>
+              <div
+                style={{
+                  height: "300px",
+                  width: "300px",
+                  background: "green",
+                }}
+              ></div>
+            </Col>
+          </Row>
+        </PaddedBox>
+      </Container>
       <h1>hello</h1>
       <h1>hello</h1>
       <h1>hello</h1>

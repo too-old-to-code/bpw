@@ -21,6 +21,11 @@ export const theme = {
     maxMobile: "767px",
     minDesktop: "768px",
   },
+  textbox: {
+    textColor: "#708080",
+    headingColor: "#0A99D8",
+    lineHeight: "1.4em",
+  },
   colors: {
     default: DEFAULT,
     primary: PRIMARY,
