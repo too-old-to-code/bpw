@@ -48,12 +48,24 @@ const ParallaxText = () => {
   )
 }
 
-export const IndexPageTemplate = ({ image, mobileImage, exampleImage }) => {
+export const IndexPageTemplate = ({ mainImage }) => {
   return (
     <React.Fragment>
       <Parallax
-        image={<PreviewSafeImage image={exampleImage} />}
-        mobileImage={<PreviewSafeImage image={exampleImage} />}
+        image={
+          <PreviewSafeImage
+            position={[80, 100]}
+            alt={mainImage.description}
+            image={mainImage.desktop}
+          />
+        }
+        mobileImage={
+          <PreviewSafeImage
+            image={mainImage.mobile}
+            position={[70, 100]}
+            alt={mainImage.description}
+          />
+        }
         height="90vh"
         mobileHeight="90vh"
         content={
@@ -93,61 +105,57 @@ export const IndexPageTemplate = ({ image, mobileImage, exampleImage }) => {
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
-  return (
-    <IndexPageTemplate
-      exampleImage={data.exampleImage}
-      mobileImage={frontmatter.mobileImage}
-      image={frontmatter.image}
-    />
-  )
+  return <IndexPageTemplate mainImage={frontmatter.mainImage} />
 }
 
 export default IndexPage
-
-export const PageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        image
-        mobileImage
-      }
-    }
-    exampleImage: file(relativePath: { eq: "example-image.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`
 
 // export const PageQuery = graphql`
 //   query IndexPageTemplate {
 //     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
 //       frontmatter {
-//         image {
-//           childImageSharp {
-//             fluid(maxWidth: 1500) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//         mobileImage {
-//           childImageSharp {
-//             fluid(maxWidth: 500) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
+//         image
+//         mobileImage
+//       }
+//     }
+//     exampleImage: file(relativePath: { eq: "example-image.jpg" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 1500) {
+//           ...GatsbyImageSharpFluid
 //         }
 //       }
 //     }
 //   }
 // `
 
+export const PageQuery = graphql`
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      frontmatter {
+        mainImage {
+          description
+          desktop {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          mobile {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    exampleImage: PropTypes.any,
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
