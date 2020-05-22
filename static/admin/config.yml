@@ -31,26 +31,26 @@ collections:
               fields:
                 [
                   { label: Description, name: description, widget: string },
-                  { label: Desktop, name: desktop, widget: image },
                   {
-                    label: Desktop Focal Point,
-                    name: desktopImageCenter,
+                    label: Desktop,
+                    name: desktop,
                     widget: object,
                     fields:
                       [
-                        { label: X, name: xPos, widget: string },
-                        { label: Y, name: yPos, widget: string },
+                        { label: Image, name: image, widget: image },
+                        { label: X-position, name: xPos, widget: number },
+                        { label: Y-position, name: yPos, widget: number },
                       ],
                   },
-                  { label: Mobile, name: mobile, widget: image },
                   {
-                    label: Mobile Focal Point,
-                    name: mobileImageCenter,
+                    label: Mobile,
+                    name: mobile,
                     widget: object,
                     fields:
                       [
-                        { label: X, name: xPos, widget: string },
-                        { label: Y, name: yPos, widget: string },
+                        { label: Image, name: image, widget: image },
+                        { label: X-position, name: xPos, widget: number },
+                        { label: Y-position, name: yPos, widget: number },
                       ],
                   },
                 ],
