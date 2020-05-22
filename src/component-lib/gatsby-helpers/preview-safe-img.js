@@ -18,7 +18,12 @@ export const PreviewSafeImage = ({
     <img
       src={image}
       alt={alt}
-      style={{ objectFit: "cover", objectPosition: `${x}% ${y}%` }}
+      style={{
+        objectFit: "cover",
+        objectPosition: `${x}% ${y}%`,
+        height: "100%",
+        width: "100%",
+      }}
     />
   )
 }

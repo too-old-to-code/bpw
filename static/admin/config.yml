@@ -32,7 +32,27 @@ collections:
                 [
                   { label: Description, name: description, widget: string },
                   { label: Desktop, name: desktop, widget: image },
+                  {
+                    label: Desktop Focal Point,
+                    name: desktopImageCenter,
+                    widget: object,
+                    fields:
+                      [
+                        { label: X, name: xPos, widget: string },
+                        { label: Y, name: yPos, widget: string },
+                      ],
+                  },
                   { label: Mobile, name: mobile, widget: image },
+                  {
+                    label: Mobile Focal Point,
+                    name: mobileImageCenter,
+                    widget: object,
+                    fields:
+                      [
+                        { label: X, name: xPos, widget: string },
+                        { label: Y, name: yPos, widget: string },
+                      ],
+                  },
                 ],
             }
       #########################################
