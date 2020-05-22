@@ -1,7 +1,7 @@
 import "../styles/global.scss"
 import React, { useState, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import { Navbar, NavbarLayoutMulti, NavbarItem, MobileMenu } from "@custom-lib"
 

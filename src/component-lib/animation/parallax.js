@@ -33,7 +33,8 @@ const ImageWrapper = styled.div`
 // At mobiles sizes this effect is disabled for performance reasons.
 export const Parallax = withTheme(props => (
   <React.Fragment>
-    {window.innerWidth > props.theme.bpoints[0] ? (
+    {typeof window !== "undefined" &&
+    window.innerWidth > props.theme.bpoints[0] ? (
       <ParallaxContainer>
         <Controller>
           <Scene duration="200%" triggerHook={props.triggerHook}>
