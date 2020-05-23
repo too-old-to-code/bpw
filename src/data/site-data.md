@@ -11,4 +11,6 @@ addressLine:
   - NP20 4ED
 email: info@bpw-insurance.co.uk
 phoneNumber: 01633 213 116
+badges:
+  - /img/investors-in-people-logo.png
 ---
