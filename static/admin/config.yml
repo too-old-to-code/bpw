@@ -57,6 +57,7 @@ collections:
               fields:
                 [
                   { label: Description, name: description, widget: string },
+                  { label: Call to Action, name: callToAction, widget: string },
                   {
                     label: Desktop,
                     name: desktop,
@@ -116,6 +117,12 @@ collections:
                       ],
                   },
                 ],
+            }
+          - {
+              label: Call to Action,
+              name: callToAction,
+              widget: object,
+              fields: [],
             }
           - {
               label: Introduction,

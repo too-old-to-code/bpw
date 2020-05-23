@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Tween, Timeline } from "react-gsap"
 import { ParallaxImageText } from "../components/parallax-image-text"
 import { Row, Col, Hidden, Container } from "react-grid-system"
@@ -22,6 +22,8 @@ const InnerContainer = styled.div`
   align-items: center;
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     justify-content: center;
+    align-items: flex-end;
+    padding: 20px 0;
   }
 `
 
@@ -32,6 +34,24 @@ const BulletPointsWrapper = styled(FlexBox)`
     padding: ${({ verticalPad = "0" }) => `${verticalPad / 2}px 0px`};
     text-align: justify;
     min-width: inherit;
+  }
+`
+
+const CallToAction = styled(Link)`
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 0;
+  border: none;
+  background-color: #0a98d8;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
+    width: 200px;
+    height: 60px;
+    font-size: 1.5em;
   }
 `
 
@@ -106,12 +126,12 @@ const BulletPointsList = ({ content }) => {
     >
       {content.title && (
         <Heading style={{ marginBottom: 0, color: "var(--not-quite-white)" }}>
-          Why Pick Us?
+          {content.title}
         </Heading>
       )}
       <List style={{ color: "var(--not-quite-white)" }}>
-        {content.list.map(({ item }) => (
-          <li>{item}</li>
+        {content.list.map(({ item }, index) => (
+          <li key={index}>{item}</li>
         ))}
       </List>
     </FlexBox>
@@ -152,7 +172,7 @@ export const IndexPageTemplate = ({
               <ParallaxText />
             </InnerContainer>
             <InnerContainer>
-              <button>hello</button>
+              <CallToAction to="/about-us">Call to action</CallToAction>
             </InnerContainer>
           </Container>
         }
