@@ -4,7 +4,15 @@ import { graphql } from "gatsby"
 import { Tween, Timeline } from "react-gsap"
 import { ParallaxImageText } from "../components/parallax-image-text"
 import { Row, Col, Hidden, Container } from "react-grid-system"
-import { Parallax, PreviewSafeImage } from "@custom-lib"
+import {
+  Parallax,
+  PreviewSafeImage,
+  CheckerDuo,
+  PopIn,
+  FlexBox,
+  Paragraph,
+  Heading,
+} from "@custom-lib"
 import styled from "styled-components"
 
 const InnerContainer = styled.div`
@@ -23,38 +31,13 @@ const PaddedBox = styled.div`
   max-width: ${({ maxWidth = "inherit" }) => maxWidth};
 `
 
-const Heading = styled.h3`
-  text-align: center;
-  color: ${({ theme }) => theme?.textbox?.headingColor};
-`
-
-const Paragraph = styled.p`
-  color: ${({ theme }) => theme?.textbox?.textColor};
-  line-height: ${({ theme }) => theme?.textbox?.lineHeight};
-`
-
-const TextBox = () => {
+const TextBox = ({ heading, text }) => {
   return (
     <PaddedBox maxWidth="600px">
-      <Heading>This is a heading</Heading>
-      <Paragraph>
-        As one of the most respected and trusted independent insurance brokers
-        based in Newport, South Wales we have been providing our clients with
-        the highest levels of service and expertise for over 35 years. As
-        commercial specialists, whatever your business, our highly trained team
-        will get it fully covered. We provide a personal service with the same
-        consultant working with you throughout the entire process. We search the
-        market for the best premiums to ensure you get the most out of your
-        insurance.
-      </Paragraph>
-      <Paragraph>
-        As specialists in commercial insurance we can offer the care and
-        technical expertise your business needs to ensure it is always fully
-        covered. Our extensive relationships with the major insurers, as well as
-        the more specialist providers, means that we can provide you with the
-        highest possible levels of cover at the most competitive prices. We also
-        provide for the personal insurance needs of our commercial clients.
-      </Paragraph>
+      <Heading>{heading}</Heading>
+      {text.map(({ paragraph }, i) => (
+        <Paragraph key={i}>{paragraph}</Paragraph>
+      ))}
     </PaddedBox>
   )
 }
@@ -91,7 +74,7 @@ const ParallaxText = () => {
   )
 }
 
-export const IndexPageTemplate = ({ mainImage }) => {
+export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
   const { mobile, desktop, description } = mainImage
   return (
     <React.Fragment>
@@ -129,7 +112,7 @@ export const IndexPageTemplate = ({ mainImage }) => {
         <PaddedBox vertical="40">
           <Row>
             <Col md={8} sm={6} xs={12}>
-              <TextBox />
+              <TextBox heading={intro.heading} text={intro.text} />
             </Col>
             <Col md={4} sm={6} xs={12}>
               <div
@@ -143,23 +126,37 @@ export const IndexPageTemplate = ({ mainImage }) => {
           </Row>
         </PaddedBox>
       </Container>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
 
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
+      {categoryPitches &&
+        categoryPitches.map((pitch, index) => {
+          return (
+            <CheckerDuo
+              key={pitch.title}
+              image={
+                <PreviewSafeImage
+                  image={pitch.image}
+                  alt={pitch.title}
+                  position={[50, 50]}
+                />
+              }
+              height="350px"
+              textPosition={index % 2 === 0 ? "right" : "left"}
+              backgroundColor="rgba(50,70,80, .85)"
+            >
+              <FlexBox
+                verticalPad="50"
+                style={{ maxWidth: "400px", color: "var(--not-quite-white)" }}
+              >
+                <PopIn>
+                  <h2 style={{ margin: 0, textAlign: "center" }}>
+                    {pitch.title}
+                  </h2>
+                  <p>{pitch.text}</p>
+                </PopIn>
+              </FlexBox>
+            </CheckerDuo>
+          )
+        })}
     </React.Fragment>
   )
 }
@@ -167,7 +164,13 @@ export const IndexPageTemplate = ({ mainImage }) => {
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
-  return <IndexPageTemplate mainImage={frontmatter.mainImage} />
+  return (
+    <IndexPageTemplate
+      mainImage={frontmatter.mainImage}
+      intro={frontmatter.introduction}
+      categoryPitches={frontmatter.categorypitch}
+    />
+  )
 }
 
 export default IndexPage
@@ -194,6 +197,12 @@ export const PageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
+        introduction {
+          heading
+          text {
+            paragraph
+          }
+        }
         mainImage {
           description
           desktop {
@@ -215,6 +224,17 @@ export const PageQuery = graphql`
                 fluid(maxWidth: 1500) {
                   ...GatsbyImageSharpFluid
                 }
+              }
+            }
+          }
+        }
+        categorypitch {
+          text
+          title
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1500) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

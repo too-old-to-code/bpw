@@ -6,6 +6,32 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "settings"
+    label: "Settings"
+    files:
+      #########################################
+      #                                       #
+      #         GLOBAL SITE DATA PAGE         #
+      #                                       #
+      #########################################
+      - file: "src/data/site-data.md"
+        label: "Site Info"
+        name: "siteInfo"
+        fields:
+          - {
+              label: "Social Media",
+              name: "socialmedia",
+              widget: "list",
+              field: { label: URL, name: url, widget: string },
+            }
+          - {
+              label: "Address Line",
+              name: "addressLine",
+              widget: "list",
+              field: { label: Line, name: line, widget: string },
+            }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone Number", name: "phoneNumber", widget: "string" }
   - name: "pages"
     label: "Pages"
     files:
