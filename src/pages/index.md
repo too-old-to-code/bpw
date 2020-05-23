@@ -10,6 +10,7 @@ mainImage:
     image: /img/main-image-mobile.jpg
     xPos: 50
     yPos: 50
+  callToAction: Get Quote
 introduction:
   heading: Insurance professionals offering a truly personal service
   text:
