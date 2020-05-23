@@ -8,7 +8,7 @@ import { Navbar, NavbarLayoutMulti, NavbarItem, MobileMenu } from "@custom-lib"
 import { Controller, Scene } from "react-scrollmagic"
 
 import Img from "gatsby-image"
-
+import { Footer } from "../components/footer"
 import { ThemeProvider } from "styled-components"
 import { theme } from "../theme.js"
 
@@ -109,7 +109,17 @@ const Layout = ({ children }) => {
   }, [burgerMenuIsActive])
 
   const data = useStaticQuery(graphql`
-    query SiteLogoQuery {
+    query GlobalLayoutQuery {
+      siteData: markdownRemark(
+        frontmatter: { templateKey: { eq: "site-data" } }
+      ) {
+        frontmatter {
+          socialmedia
+          addressLine
+          phoneNumber
+          email
+        }
+      }
       logo: file(relativePath: { eq: "logo.png" }) {
         childImageSharp {
           fluid(maxWidth: 200) {
@@ -166,6 +176,7 @@ const Layout = ({ children }) => {
         </Scene>
       </Controller>
       {children}
+      <Footer siteData={data.siteData.frontmatter} />
     </ThemeProvider>
   )
 }

@@ -34,6 +34,15 @@ module.exports = {
         name: "pages",
       },
     },
+    // This is where the markdown file for the global site data will be.
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/data/`,
+        name: "site-data",
+      },
+    },
+
     // alias the custom component lib for easier importing
     {
       resolve: `gatsby-plugin-alias-imports`,

@@ -12,6 +12,7 @@ import {
   FlexBox,
   Paragraph,
   Heading,
+  PaddedBox,
 } from "@custom-lib"
 import styled from "styled-components"
 
@@ -22,13 +23,6 @@ const InnerContainer = styled.div`
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     justify-content: center;
   }
-`
-
-const PaddedBox = styled.div`
-  padding: ${({ vertical = 0, horizontal = 0 }) =>
-    `${vertical}px ${horizontal}px`};
-  margin: 0 auto;
-  max-width: ${({ maxWidth = "inherit" }) => maxWidth};
 `
 
 const TextBox = ({ heading, text }) => {
@@ -74,6 +68,38 @@ const ParallaxText = () => {
   )
 }
 
+const List = styled.ul`
+  li {
+    margin: 10px 0;
+  }
+`
+
+const BulletPointsList = () => {
+  return (
+    <FlexBox
+      verticalPad="20"
+      horizontalPad="20"
+      style={{
+        backgroundColor: "#06426A",
+        width: "100%",
+        fontSize: "1em",
+      }}
+    >
+      <Heading style={{ marginBottom: 0, color: "var(--not-quite-white)" }}>
+        Why Pick Us?
+      </Heading>
+      <List style={{ color: "var(--not-quite-white)" }}>
+        <li>Service-led business</li>
+        <li>Independent and trusted</li>
+        <li>Highly competitive premiums</li>
+        <li>Personal consultants</li>
+        <li>Dedicated claims assistance</li>
+        <li>Finance available</li>
+      </List>
+    </FlexBox>
+  )
+}
+
 export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
   const { mobile, desktop, description } = mainImage
   return (
@@ -114,14 +140,13 @@ export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
             <Col md={8} sm={6} xs={12}>
               <TextBox heading={intro.heading} text={intro.text} />
             </Col>
-            <Col md={4} sm={6} xs={12}>
-              <div
-                style={{
-                  height: "300px",
-                  width: "300px",
-                  background: "green",
-                }}
-              ></div>
+            <Col
+              md={4}
+              sm={6}
+              xs={12}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <BulletPointsList />
             </Col>
           </Row>
         </PaddedBox>
@@ -148,9 +173,12 @@ export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
                 style={{ maxWidth: "400px", color: "var(--not-quite-white)" }}
               >
                 <PopIn>
-                  <h2 style={{ margin: 0, textAlign: "center" }}>
+                  <Heading
+                    as="h2"
+                    style={{ margin: 0, color: "var(--not-quite-white)" }}
+                  >
                     {pitch.title}
-                  </h2>
+                  </Heading>
                   <p>{pitch.text}</p>
                 </PopIn>
               </FlexBox>

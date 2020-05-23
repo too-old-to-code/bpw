@@ -7,7 +7,7 @@ const CheckerDuoContainer = styled.div`
   overflow: hidden;
   display: flex;
   height: initial;
-  @media (min-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
+  @media (min-width: ${({ theme }) => theme?.bpoints[0]}px) {
     &: ${props => (props.front ? "after" : "before")} {
       content: "";
       flex: 1;
@@ -26,9 +26,9 @@ const ImageWrapper = styled.div`
   & > div {
     width: 100%;
     height: 100%;
-    z-index: 0;
-    object-fit: cover;
-    object-position: 50% 100%;
+    // z-index: 0;
+    // object-fit: cover;
+    // object-position: 50% 100%;
   }
 `
 
@@ -41,9 +41,6 @@ const ContentPanel = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  // @media (min-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
-  //   padding: 50px 0 70px 0;
-  // }
 `
 
 export const CheckerDuo = props => {

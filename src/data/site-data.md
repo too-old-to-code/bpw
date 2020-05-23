@@ -1,4 +1,5 @@
 ---
+templateKey: site-data
 socialmedia:
   - http://facebook.com/BpwInsurance
   - http://linkedin.com/company/bpw-insurance-services
