@@ -5,4 +5,7 @@ export const PaddedBox = styled.div`
     `${vertical}px ${horizontal}px`};
   margin: 0 auto;
   max-width: ${({ maxWidth = "inherit" }) => maxWidth};
+  @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
+    padding: ${({ vertical = 0 }) => `${vertical}px 10px`};
+  }
 `

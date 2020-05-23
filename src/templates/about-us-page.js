@@ -25,16 +25,6 @@ const InnerContainer = styled.div`
   }
 `
 
-const BulletPointsWrapper = styled(FlexBox)`
-  flex: 1;
-  min-width: 400px;
-  @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
-    padding: ${({ verticalPad = "0" }) => `${verticalPad / 2}px 0px`};
-    text-align: justify;
-    min-width: inherit;
-  }
-`
-
 const TextBox = ({ heading, text }) => {
   return (
     <PaddedBox maxWidth="600px">
@@ -45,14 +35,6 @@ const TextBox = ({ heading, text }) => {
     </PaddedBox>
   )
 }
-
-const IntroWithAside = styled.div`
-  display: flex;
-  flex-direction: row;
-  @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
-    flex-direction: column;
-  }
-`
 
 const ParallaxText = () => {
   return (
@@ -88,7 +70,6 @@ const ParallaxText = () => {
 
 const List = styled.ul`
   li {
-    font-size: 1rem;
     margin: 10px 0;
   }
 `
@@ -98,10 +79,10 @@ const BulletPointsList = ({ content }) => {
     <FlexBox
       verticalPad="20"
       horizontalPad="20"
-      fontSize="1rem"
       style={{
         backgroundColor: "#06426A",
         width: "100%",
+        fontSize: "1em",
       }}
     >
       {content.title && (
@@ -118,12 +99,7 @@ const BulletPointsList = ({ content }) => {
   )
 }
 
-export const IndexPageTemplate = ({
-  mainImage,
-  intro,
-  categoryPitches,
-  bulletPoints,
-}) => {
+export const AboutUsPageTemplate = ({ mainImage, intro }) => {
   const { mobile, desktop, description } = mainImage
   return (
     <React.Fragment>
@@ -157,26 +133,23 @@ export const IndexPageTemplate = ({
           </Container>
         }
       />
-
-      <PaddedBox horizontal="40">
-        <IntroWithAside>
-          <BulletPointsWrapper
-            verticalPad="40"
-            horizontalPad="20"
-            style={{ flex: 2 }}
-            fontSize="1rem"
-          >
-            <TextBox
-              heading={intro.heading}
-              text={intro.text}
-              style={{ flex: 1 }}
-            />
-          </BulletPointsWrapper>
-          <BulletPointsWrapper verticalPad="40" horizontalPad="20">
-            <BulletPointsList content={bulletPoints} />
-          </BulletPointsWrapper>
-        </IntroWithAside>
-      </PaddedBox>
+      <Container>
+        <PaddedBox vertical="40">
+          <Row>
+            <Col md={8} sm={6} xs={12}>
+              <TextBox heading={intro.heading} text={intro.text} />
+            </Col>
+            <Col
+              md={4}
+              sm={6}
+              xs={12}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <BulletPointsList content={bulletPoints} />
+            </Col>
+          </Row>
+        </PaddedBox>
+      </Container>
 
       {categoryPitches &&
         categoryPitches.map((pitch, index) => {
@@ -218,41 +191,21 @@ export const IndexPageTemplate = ({
   )
 }
 
-const IndexPage = ({ data }) => {
+const AboutUsPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <IndexPageTemplate
+    <AboutUsPageTemplate
       mainImage={frontmatter.mainImage}
       intro={frontmatter.introduction}
-      categoryPitches={frontmatter.categorypitch}
-      bulletPoints={frontmatter.bulletPoints}
     />
   )
 }
 
-export default IndexPage
-
-// export const PageQuery = graphql`
-//   query IndexPageTemplate {
-//     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-//       frontmatter {
-//         image
-//         mobileImage
-//       }
-//     }
-//     exampleImage: file(relativePath: { eq: "example-image.jpg" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 1500) {
-//           ...GatsbyImageSharpFluid
-//         }
-//       }
-//     }
-//   }
-// `
+export default AboutUsPage
 
 export const PageQuery = graphql`
-  query IndexPageTemplate {
+  query AboutUsPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         introduction {
@@ -286,29 +239,12 @@ export const PageQuery = graphql`
             }
           }
         }
-        categorypitch {
-          text
-          title
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1500) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        bulletPoints {
-          title
-          list {
-            item
-          }
-        }
       }
     }
   }
 `
 
-IndexPage.propTypes = {
+AboutUs.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
