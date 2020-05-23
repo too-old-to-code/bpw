@@ -11,7 +11,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
       <IndexPageTemplate
         mainImage={data.mainImage}
         intro={data.introduction}
-        categoryPitches={data.categoryPitch}
+        categoryPitches={data.categorypitch}
         bulletPoints={data.bulletPoints}
       />
     )
