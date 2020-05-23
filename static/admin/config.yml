@@ -32,6 +32,12 @@ collections:
             }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Phone Number", name: "phoneNumber", widget: "string" }
+          - {
+              label: Badges,
+              name: badges,
+              widget: list,
+              field: { label: Badge, name: badge, widget: image },
+            }
   - name: "pages"
     label: "Pages"
     files:
