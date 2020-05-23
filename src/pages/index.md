@@ -27,6 +27,15 @@ introduction:
         the more specialist providers, means that we can provide you with the
         highest possible levels of cover at the most competitive prices. We also
         provide for the personal insurance needs of our commercial clients.
+bulletPoints:
+  title: Why choose us?
+  list:
+    - item: Service-led business
+    - item: Independent and trusted
+    - item: Highly competitive premiums
+    - item: Personal consultants
+    - item: Dedicated claims assistance
+    - item: Finance available
 categorypitch:
   - title: Construction
     text: Protecting against the cost of loss, damage, contract materials and more
