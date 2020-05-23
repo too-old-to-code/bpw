@@ -39,31 +39,7 @@ const TextBox = ({ heading, text }) => {
 const ParallaxText = () => {
   return (
     <ParallaxImageText>
-      <Timeline>
-        {["Independent", "Trusted", "Professional"].map(word => {
-          return (
-            <Tween
-              key={word}
-              ease="Power2.easeIn"
-              duration="1"
-              from={{
-                xPercent: -150,
-              }}
-            >
-              <div>{word}</div>
-            </Tween>
-          )
-        })}
-        <Tween
-          ease="Power2.easeIn"
-          duration="1"
-          from={{
-            opacity: 0,
-          }}
-        >
-          <div style={{ color: "white" }}>Insurance brokers</div>
-        </Tween>
-      </Timeline>
+      <div>Here is the page heading</div>
     </ParallaxImageText>
   )
 }
@@ -127,66 +103,12 @@ export const AboutUsPageTemplate = ({ mainImage, intro }) => {
             <InnerContainer>
               <ParallaxText />
             </InnerContainer>
-            <InnerContainer>
-              <button>hello</button>
-            </InnerContainer>
           </Container>
         }
       />
-      <Container>
-        <PaddedBox vertical="40">
-          <Row>
-            <Col md={8} sm={6} xs={12}>
-              <TextBox heading={intro.heading} text={intro.text} />
-            </Col>
-            <Col
-              md={4}
-              sm={6}
-              xs={12}
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <BulletPointsList content={bulletPoints} />
-            </Col>
-          </Row>
-        </PaddedBox>
-      </Container>
-
-      {categoryPitches &&
-        categoryPitches.map((pitch, index) => {
-          return (
-            <CheckerDuo
-              key={pitch.title}
-              image={
-                <PreviewSafeImage
-                  image={pitch.image}
-                  alt={pitch.title}
-                  position={[50, 50]}
-                />
-              }
-              height="350px"
-              textPosition={index % 2 === 0 ? "right" : "left"}
-              backgroundColor="rgba(50,70,80, .85)"
-            >
-              <FlexBox
-                verticalPad="50"
-                horizontalPad="40"
-                style={{ color: "var(--not-quite-white)" }}
-              >
-                <PopIn>
-                  <div style={{ maxWidth: "400px" }}>
-                    <Heading
-                      as="h2"
-                      style={{ margin: 0, color: "var(--not-quite-white)" }}
-                    >
-                      {pitch.title}
-                    </Heading>
-                    <p>{pitch.text}</p>
-                  </div>
-                </PopIn>
-              </FlexBox>
-            </CheckerDuo>
-          )
-        })}
+      <PaddedBox horizontal="40" vertical="40">
+        <TextBox heading={intro.heading} text={intro.text} />
+      </PaddedBox>
     </React.Fragment>
   )
 }
@@ -206,7 +128,7 @@ export default AboutUsPage
 
 export const PageQuery = graphql`
   query AboutUsPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
       frontmatter {
         introduction {
           heading
@@ -244,7 +166,7 @@ export const PageQuery = graphql`
   }
 `
 
-AboutUs.propTypes = {
+AboutUsPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,

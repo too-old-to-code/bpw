@@ -1,4 +1,5 @@
 ---
+templateKey: about-us-page
 mainImage:
   description: Men at desk doing business
   desktop:
@@ -20,10 +21,12 @@ introduction:
         the more specialist providers means that we can provide you with the
         highest possible levels of cover at the most competitive prices. We also
         provide for the personal insurance needs of our commercial clients.
-    - paragraph: In a time of mass consolidation within the insurance industry our
+    - paragraph:
+        In a time of mass consolidation within the insurance industry our
         independent status means that we can offer you truly independent advice
         and solutions for you and your business.
-    - paragraph: We are authorised and regulated by the Financial Conduct Authority
+    - paragraph:
+        We are authorised and regulated by the Financial Conduct Authority
         (FCA). Our Firm Reference Number is 481844. We are also members of the
         British Institute of Insurance Brokers (BIBA).
 ---
