@@ -74,7 +74,7 @@ const List = styled.ul`
   }
 `
 
-const BulletPointsList = () => {
+const BulletPointsList = ({ content }) => {
   return (
     <FlexBox
       verticalPad="20"
@@ -85,22 +85,26 @@ const BulletPointsList = () => {
         fontSize: "1em",
       }}
     >
-      <Heading style={{ marginBottom: 0, color: "var(--not-quite-white)" }}>
-        Why Pick Us?
-      </Heading>
+      {content.title && (
+        <Heading style={{ marginBottom: 0, color: "var(--not-quite-white)" }}>
+          Why Pick Us?
+        </Heading>
+      )}
       <List style={{ color: "var(--not-quite-white)" }}>
-        <li>Service-led business</li>
-        <li>Independent and trusted</li>
-        <li>Highly competitive premiums</li>
-        <li>Personal consultants</li>
-        <li>Dedicated claims assistance</li>
-        <li>Finance available</li>
+        {content.list.map(({ item }) => (
+          <li>{item}</li>
+        ))}
       </List>
     </FlexBox>
   )
 }
 
-export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
+export const IndexPageTemplate = ({
+  mainImage,
+  intro,
+  categoryPitches,
+  bulletPoints,
+}) => {
   const { mobile, desktop, description } = mainImage
   return (
     <React.Fragment>
@@ -146,7 +150,7 @@ export const IndexPageTemplate = ({ mainImage, intro, categoryPitches }) => {
               xs={12}
               style={{ display: "flex", alignItems: "center" }}
             >
-              <BulletPointsList />
+              <BulletPointsList content={bulletPoints} />
             </Col>
           </Row>
         </PaddedBox>
@@ -197,6 +201,7 @@ const IndexPage = ({ data }) => {
       mainImage={frontmatter.mainImage}
       intro={frontmatter.introduction}
       categoryPitches={frontmatter.categorypitch}
+      bulletPoints={frontmatter.bulletPoints}
     />
   )
 }
@@ -265,6 +270,12 @@ export const PageQuery = graphql`
                 ...GatsbyImageSharpFluid
               }
             }
+          }
+        }
+        bulletPoints {
+          title
+          list {
+            item
           }
         }
       }

@@ -7,7 +7,14 @@ const IndexPagePreview = ({ entry, getAsset }) => {
   console.log(entry)
   if (data) {
     console.log(data)
-    return <IndexPageTemplate mainImage={data.mainImage} />
+    return (
+      <IndexPageTemplate
+        mainImage={data.mainImage}
+        intro={data.introduction}
+        categoryPitches={data.categoryPitch}
+        bulletPoints={data.bulletPoints}
+      />
+    )
   } else {
     return <div>Loading...</div>
   }
