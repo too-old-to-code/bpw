@@ -10,6 +10,15 @@ mainImage:
     image: /img/construction-small.jpg
     xPos: 50
     yPos: 50
+  text:
+    - words: Independent commercial
+      animate: false
+      animation: slide
+      color: "#0a99d8"
+    - words: insurance brokers
+      animate: false
+      animation: slide
+      color: "#0a99d8"
 introduction:
   heading: A client focused insurance company offering a personal service at
     competitive rates

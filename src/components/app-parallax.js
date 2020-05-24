@@ -1,6 +1,5 @@
 import React from "react"
 import { Parallax, PreviewSafeImage } from "@custom-lib"
-import { Container } from "react-grid-system"
 
 export const AppParallax = ({ mainImage, children }) => {
   const { mobile, desktop, description } = mainImage

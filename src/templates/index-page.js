@@ -1,20 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
-import { Tween, Timeline } from "react-gsap"
+import { AppParallaxText } from "../components/parallax-image-text"
+import { Container } from "react-grid-system"
 import {
-  ParallaxImageText,
-  AppParallaxText,
-} from "../components/parallax-image-text"
-import { Row, Col, Hidden, Container } from "react-grid-system"
-import {
-  Parallax,
   CheckerDuo,
   PopIn,
   FlexBox,
-  Paragraph,
   Heading,
-  PaddedBox,
   PreviewSafeImage,
 } from "@custom-lib"
 import styled from "styled-components"
@@ -63,7 +56,6 @@ export const IndexPageTemplate = ({
   categoryPitches,
   bulletPoints,
 }) => {
-  const { mobile, desktop, description } = mainImage
   return (
     <React.Fragment>
       <AppParallax mainImage={mainImage}>
@@ -145,63 +137,10 @@ export default IndexPage
 export const PageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        introduction {
-          heading
-          text {
-            paragraph
-          }
-        }
-        mainImage {
-          text {
-            words
-            animate
-            animation
-            color
-          }
-          callToAction
-          description
-          desktop {
-            xPos
-            yPos
-            image {
-              childImageSharp {
-                fluid(maxWidth: 2000) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          mobile {
-            xPos
-            yPos
-            image {
-              childImageSharp {
-                fluid(maxWidth: 1500) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-        categorypitch {
-          text
-          title
-          image {
-            childImageSharp {
-              fluid(maxWidth: 1500) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        bulletPoints {
-          title
-          list {
-            item
-          }
-        }
-      }
+      ...MainImageFields
+      ...IntroFields
+      ...CategorypitchFields
+      ...BulletPointsFields
     }
   }
 `
