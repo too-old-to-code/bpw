@@ -63,6 +63,23 @@ collections:
               fields:
                 [
                   { label: Description, name: description, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Words, name: words, widget: string },
+                        { label: Animate, name: animate, widget: boolean },
+                        {
+                          label: Animation,
+                          name: animation,
+                          widget: select,
+                          options: ["slide", "fade"],
+                        },
+                        { label: Words color, name: color, widget: string },
+                      ],
+                  },
                   { label: Call to Action, name: callToAction, widget: string },
                   {
                     label: Desktop,
@@ -124,12 +141,7 @@ collections:
                   },
                 ],
             }
-          - {
-              label: Call to Action,
-              name: callToAction,
-              widget: object,
-              fields: [],
-            }
+
           - {
               label: Introduction,
               name: introduction,

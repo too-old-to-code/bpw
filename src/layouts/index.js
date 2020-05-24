@@ -39,7 +39,7 @@ const MenuLink = styled(Link)`
 const PAGES = [
   { path: "/", name: "Home", desktop: true, mobile: true },
   { path: "/about-us", name: "About Us", desktop: true, mobile: true },
-  { path: "/services", name: "Services", desktop: true, mobile: true },
+  { path: "/our-services", name: "Services", desktop: true, mobile: true },
   { path: "/our-clients", name: "Our Clients", desktop: true, mobile: true },
   { path: "/contact-us", name: "Contact Us", desktop: true, mobile: true },
 ]
