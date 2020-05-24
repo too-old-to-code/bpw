@@ -2,7 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import { Tween, Timeline } from "react-gsap"
-import { ParallaxImageText } from "../components/parallax-image-text"
+import {
+  ParallaxImageText,
+  AppParallaxText,
+} from "../components/parallax-image-text"
 import { Row, Col, Hidden, Container } from "react-grid-system"
 import {
   Parallax,
@@ -54,55 +57,6 @@ const CallToAction = styled(Link)`
   }
 `
 
-const ParallaxText = text => {
-  const items = [
-    {
-      string: "Independent",
-      animate: true,
-      animation: "slide",
-      color: "rgb(160, 216, 123)",
-    },
-    {
-      string: "Trusted",
-      animate: true,
-      animation: "slide",
-      color: "rgb(160, 216, 123)",
-    },
-    {
-      string: "Professional",
-      animate: true,
-      animation: "slide",
-      color: "rgb(160, 216, 123)",
-    },
-    {
-      string: "Insurance brokers",
-      animate: true,
-      animation: "fade",
-      color: "white",
-    },
-  ]
-  return (
-    <ParallaxImageText>
-      <Timeline>
-        {items.map(({ string, animate, animation, color }) => {
-          return animate ? (
-            <Tween
-              key={string}
-              ease="Power2.easeIn"
-              duration="1"
-              from={animation === "slide" ? { xPercent: -150 } : { opacity: 0 }}
-            >
-              <div style={{ color }}>{string}</div>
-            </Tween>
-          ) : (
-            <div style={{ color }}>{string}</div>
-          )
-        })}
-      </Timeline>
-    </ParallaxImageText>
-  )
-}
-
 export const IndexPageTemplate = ({
   mainImage,
   intro,
@@ -122,7 +76,7 @@ export const IndexPageTemplate = ({
           }}
         >
           <InnerContainer>
-            <ParallaxText />
+            <AppParallaxText text={mainImage?.text} />
           </InnerContainer>
           <InnerContainer>
             <CallToAction to="/about-us">{mainImage.callToAction}</CallToAction>
@@ -199,6 +153,12 @@ export const PageQuery = graphql`
           }
         }
         mainImage {
+          text {
+            words
+            animate
+            animation
+            color
+          }
           callToAction
           description
           desktop {
