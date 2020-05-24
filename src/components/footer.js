@@ -52,12 +52,13 @@ export const Footer = ({ image, siteData }) => {
         <Hidden xs>
           <Col sm={6}>
             <FooterBlock>
-              <div style={{ width: "150px" }}>
-                <Img fluid={siteData.badges[0].childImageSharp.fluid} />
-              </div>
-              <div style={{ width: "150px" }}>
-                <Img fluid={siteData.badges[0].childImageSharp.fluid} />
-              </div>
+              {siteData.badges.map(badge => {
+                return (
+                  <div style={{ width: "150px" }}>
+                    <Img fluid={badge.childImageSharp.fluid} />
+                  </div>
+                )
+              })}
             </FooterBlock>
           </Col>
         </Hidden>

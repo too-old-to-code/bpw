@@ -87,14 +87,19 @@ const ParallaxText = text => {
       string: "Independent",
       animate: true,
       animation: "slide",
-      color: "green",
+      color: "rgb(160, 216, 123)",
     },
-    { string: "Trusted", animate: true, animation: "slide", color: "green" },
+    {
+      string: "Trusted",
+      animate: true,
+      animation: "slide",
+      color: "rgb(160, 216, 123)",
+    },
     {
       string: "Professional",
       animate: true,
       animation: "slide",
-      color: "green",
+      color: "rgb(160, 216, 123)",
     },
     {
       string: "Insurance brokers",

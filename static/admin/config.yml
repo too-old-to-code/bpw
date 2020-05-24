@@ -270,3 +270,117 @@ collections:
                   },
                 ],
             }
+          - {
+              label: Our Team,
+              name: ourTeam,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
+      #########################################
+      #                                       #
+      #            OUR SERVICES PAGE          #
+      #                                       #
+      #########################################
+      - file: "src/pages/our-services.md"
+        label: "Our services page"
+        name: "our-services-page"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-us-page",
+            }
+          - {
+              label: Main Image,
+              name: mainImage,
+              widget: object,
+              fields:
+                [
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Desktop,
+                    name: desktop,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                  {
+                    label: Mobile,
+                    name: mobile,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        {
+                          label: X-position,
+                          name: xPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                        {
+                          label: Y-position,
+                          name: yPos,
+                          widget: number,
+                          default: 50,
+                          valueType: "int",
+                          min: 0,
+                          max: 100,
+                          step: 5,
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Introduction,
+              name: introduction,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: list,
+                    fields:
+                      [{ label: Paragraph, name: paragraph, widget: text }],
+                  },
+                ],
+            }
