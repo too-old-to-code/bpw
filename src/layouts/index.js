@@ -118,6 +118,13 @@ const Layout = ({ children }) => {
           addressLine
           phoneNumber
           email
+          badges {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
       logo: file(relativePath: { eq: "logo.png" }) {

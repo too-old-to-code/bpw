@@ -16,6 +16,12 @@ import {
 } from "@custom-lib"
 import styled from "styled-components"
 
+const MarginOnMobile = styled.div`
+  @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
+    margin: 20px 5px;
+  }
+`
+
 const InnerContainer = styled.div`
   display: flex;
   flex: 1;
@@ -23,7 +29,7 @@ const InnerContainer = styled.div`
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     justify-content: center;
     align-items: flex-end;
-    padding: 20px 0;
+    padding-bottom: 50px;
   }
 `
 
@@ -42,16 +48,17 @@ const CallToAction = styled(Link)`
   font-size: 1.2em;
   border-radius: 0;
   border: none;
-  background-color: #0a98d8;
+  // background-color: #0a98d8;
+  background-color: rgb(6, 66, 106);
   color: white;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
-    width: 200px;
-    height: 60px;
-    font-size: 1.5em;
+    width: 150px;
+    // height: 60px;
+    // font-size: 1.5em;
   }
 `
 
@@ -74,33 +81,45 @@ const IntroWithAside = styled.div`
   }
 `
 
-const ParallaxText = () => {
+const ParallaxText = text => {
+  const items = [
+    {
+      string: "Independent",
+      animate: true,
+      animation: "slide",
+      color: "green",
+    },
+    { string: "Trusted", animate: true, animation: "slide", color: "green" },
+    {
+      string: "Professional",
+      animate: true,
+      animation: "slide",
+      color: "green",
+    },
+    {
+      string: "Insurance brokers",
+      animate: true,
+      animation: "fade",
+      color: "white",
+    },
+  ]
   return (
     <ParallaxImageText>
       <Timeline>
-        {["Independent", "Trusted", "Professional"].map(word => {
-          return (
+        {items.map(({ string, animate, animation, color }) => {
+          return animate ? (
             <Tween
-              key={word}
+              key={string}
               ease="Power2.easeIn"
               duration="1"
-              from={{
-                xPercent: -150,
-              }}
+              from={animation === "slide" ? { xPercent: -150 } : { opacity: 0 }}
             >
-              <div>{word}</div>
+              <div style={{ color }}>{string}</div>
             </Tween>
+          ) : (
+            <div style={{ color }}>{string}</div>
           )
         })}
-        <Tween
-          ease="Power2.easeIn"
-          duration="1"
-          from={{
-            opacity: 0,
-          }}
-        >
-          <div style={{ color: "white" }}>Insurance brokers</div>
-        </Tween>
       </Timeline>
     </ParallaxImageText>
   )
@@ -166,13 +185,20 @@ export const IndexPageTemplate = ({
         mobileHeight="90vh"
         content={
           <Container
-            style={{ height: "100%", flexDirection: "column", display: "flex" }}
+            style={{
+              height: "100%",
+              flexDirection: "column",
+              display: "flex",
+              flexWrap: "wrap",
+            }}
           >
             <InnerContainer>
               <ParallaxText />
             </InnerContainer>
             <InnerContainer>
-              <CallToAction to="/about-us">Call to action</CallToAction>
+              <CallToAction to="/about-us">
+                {mainImage.callToAction}
+              </CallToAction>
             </InnerContainer>
           </Container>
         }
@@ -201,37 +227,39 @@ export const IndexPageTemplate = ({
       {categoryPitches &&
         categoryPitches.map((pitch, index) => {
           return (
-            <CheckerDuo
-              key={pitch.title}
-              image={
-                <PreviewSafeImage
-                  image={pitch.image}
-                  alt={pitch.title}
-                  position={[50, 50]}
-                />
-              }
-              height="350px"
-              textPosition={index % 2 === 0 ? "right" : "left"}
-              backgroundColor="rgba(50,70,80, .85)"
-            >
-              <FlexBox
-                verticalPad="50"
-                horizontalPad="40"
-                style={{ color: "var(--not-quite-white)" }}
+            <MarginOnMobile>
+              <CheckerDuo
+                key={pitch.title}
+                image={
+                  <PreviewSafeImage
+                    image={pitch.image}
+                    alt={pitch.title}
+                    position={[50, 50]}
+                  />
+                }
+                height="350px"
+                textPosition={index % 2 === 0 ? "right" : "left"}
+                backgroundColor="rgba(50,70,80, .85)"
               >
-                <PopIn>
-                  <div style={{ maxWidth: "400px" }}>
-                    <Heading
-                      as="h2"
-                      style={{ margin: 0, color: "var(--not-quite-white)" }}
-                    >
-                      {pitch.title}
-                    </Heading>
-                    <p>{pitch.text}</p>
-                  </div>
-                </PopIn>
-              </FlexBox>
-            </CheckerDuo>
+                <FlexBox
+                  verticalPad="50"
+                  horizontalPad="40"
+                  style={{ color: "var(--not-quite-white)" }}
+                >
+                  <PopIn>
+                    <div style={{ maxWidth: "400px" }}>
+                      <Heading
+                        as="h2"
+                        style={{ margin: 0, color: "var(--not-quite-white)" }}
+                      >
+                        {pitch.title}
+                      </Heading>
+                      <p>{pitch.text}</p>
+                    </div>
+                  </PopIn>
+                </FlexBox>
+              </CheckerDuo>
+            </MarginOnMobile>
           )
         })}
     </React.Fragment>
@@ -282,6 +310,7 @@ export const PageQuery = graphql`
           }
         }
         mainImage {
+          callToAction
           description
           desktop {
             xPos

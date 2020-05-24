@@ -49,15 +49,18 @@ export const Footer = ({ image, siteData }) => {
             </div>
           </FooterBlock>
         </Col>
-        {/*<Hidden xs>
+        <Hidden xs>
           <Col sm={6}>
             <FooterBlock>
               <div style={{ width: "150px" }}>
-                <Img fluid={image.childImageSharp.fluid} />
+                <Img fluid={siteData.badges[0].childImageSharp.fluid} />
+              </div>
+              <div style={{ width: "150px" }}>
+                <Img fluid={siteData.badges[0].childImageSharp.fluid} />
               </div>
             </FooterBlock>
           </Col>
-        </Hidden>*/}
+        </Hidden>
       </Row>
       <hr style={{ margin: "40px 30px", borderTop: 0 }} />
       <div
