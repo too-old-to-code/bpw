@@ -11,6 +11,23 @@ mainImage:
     xPos: 50
     yPos: 50
   callToAction: Get Quote
+  text:
+    - words: Independent
+      animate: true
+      animation: slide
+      color: "#A0D87B"
+    - words: Trusted
+      animate: true
+      animation: slide
+      color: "#A0D87B"
+    - words: Professional
+      animate: true
+      animation: slide
+      color: "#A0D87B"
+    - words: Insurance brokers
+      animate: true
+      animation: fade
+      color: white
 introduction:
   heading: Insurance professionals offering a truly personal service
   text:
