@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import { AppParallaxText } from "../components/parallax-image-text"
 import { Container } from "react-grid-system"
-import { PaddedBox } from "@custom-lib"
+import { PaddedBox, Heading } from "@custom-lib"
 import { AppParallax } from "../components/app-parallax"
 import { AppTextBox } from "../components/app-text-box"
 import styled from "styled-components"
@@ -17,7 +17,7 @@ const InnerContainer = styled.div`
   }
 `
 
-export const AboutUsPageTemplate = ({ mainImage, intro }) => {
+export const AboutUsPageTemplate = ({ mainImage, intro, ourTeam }) => {
   return (
     <React.Fragment>
       <AppParallax mainImage={mainImage}>
@@ -27,6 +27,18 @@ export const AboutUsPageTemplate = ({ mainImage, intro }) => {
       </AppParallax>
       <PaddedBox horizontal="40" vertical="40">
         <AppTextBox heading={intro.heading} text={intro.text} />
+      </PaddedBox>
+      <PaddedBox
+        horizontal="40"
+        vertical="40"
+        style={{ background: "#06426a" }}
+      >
+        <Heading as="h2" color="white">
+          Our people offer unrivalled service and knowledge
+        </Heading>
+      </PaddedBox>
+      <PaddedBox horizontal="40" vertical="40">
+        <AppTextBox heading={ourTeam.heading} text={ourTeam.text} />
       </PaddedBox>
     </React.Fragment>
   )
@@ -39,6 +51,7 @@ const AboutUsPage = ({ data }) => {
     <AboutUsPageTemplate
       mainImage={frontmatter.mainImage}
       intro={frontmatter.introduction}
+      ourTeam={frontmatter.ourTeam}
     />
   )
 }
@@ -50,6 +63,7 @@ export const PageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
       ...IntroFields
       ...MainImageFields
+      ...OurTeamFields
     }
   }
 `

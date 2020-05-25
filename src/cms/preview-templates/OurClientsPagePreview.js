@@ -4,9 +4,7 @@ import { OurClientsPageTemplate } from "../../templates/our-clients"
 
 const OurClientsPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(["data"]).toJS()
-  console.log(entry)
   if (data) {
-    console.log(data)
     return (
       <OurClientsPageTemplate
         mainImage={data.mainImage}

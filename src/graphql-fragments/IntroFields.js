@@ -12,3 +12,16 @@ export const introFields = graphql`
     }
   }
 `
+
+export const ourTeamFields = graphql`
+  fragment OurTeamFields on MarkdownRemark {
+    frontmatter {
+      ourTeam {
+        heading
+        text {
+          paragraph
+        }
+      }
+    }
+  }
+`
