@@ -4,6 +4,7 @@ import { StyleSheetManager, ThemeProvider } from "styled-components"
 import IndexPagePreview from "./preview-templates/IndexPagePreview"
 import AboutUsPagePreview from "./preview-templates/AboutUsPagePreview"
 import OurServicesPagePreview from "./preview-templates/OurServicesPagePreview"
+import OurClientsPagePreview from "./preview-templates/OurClientsPagePreview"
 
 import { theme } from "../theme"
 
@@ -42,5 +43,11 @@ CMS.registerPreviewTemplate("about-us-page", props => (
 CMS.registerPreviewTemplate("our-services", props => (
   <StylesheetInjector>
     <OurServicesPagePreview {...props} />
+  </StylesheetInjector>
+))
+
+CMS.registerPreviewTemplate("our-clients-page", props => (
+  <StylesheetInjector>
+    <OurClientsPagePreview {...props} />
   </StylesheetInjector>
 ))
