@@ -21,13 +21,9 @@ export const OurServicesPageTemplate = ({ mainImage, intro }) => {
   return (
     <React.Fragment>
       <AppParallax mainImage={mainImage}>
-        <Container
-          style={{ height: "100%", flexDirection: "column", display: "flex" }}
-        >
-          <InnerContainer>
-            <AppParallaxText text={mainImage?.text} />
-          </InnerContainer>
-        </Container>
+        <InnerContainer>
+          <AppParallaxText text={mainImage?.text} />
+        </InnerContainer>
       </AppParallax>
 
       <PaddedBox horizontal="40" vertical="40">

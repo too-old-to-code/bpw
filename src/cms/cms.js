@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import { StyleSheetManager, ThemeProvider } from "styled-components"
 import IndexPagePreview from "./preview-templates/IndexPagePreview"
 import AboutUsPagePreview from "./preview-templates/AboutUsPagePreview"
+import OurServicesPagePreview from "./preview-templates/OurServicesPagePreview"
 
 import { theme } from "../theme"
 
@@ -35,5 +36,11 @@ CMS.registerPreviewTemplate("index-page", props => (
 CMS.registerPreviewTemplate("about-us-page", props => (
   <StylesheetInjector>
     <AboutUsPagePreview {...props} />
+  </StylesheetInjector>
+))
+
+CMS.registerPreviewTemplate("our-services", props => (
+  <StylesheetInjector>
+    <OurServicesPagePreview {...props} />
   </StylesheetInjector>
 ))

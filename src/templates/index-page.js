@@ -27,7 +27,7 @@ const InnerContainer = styled.div`
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 50px;
+    // padding-bottom: 50px;
   }
 `
 
@@ -44,9 +44,10 @@ const CallToAction = styled(Link)`
   align-items: center;
   justify-content: center;
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
-    width: 150px;
+    min-width: 150px;
     // height: 60px;
-    // font-size: 1.5em;
+    font-size: 1.5em;
+    margin-bottom: 50px;
   }
 `
 
@@ -59,21 +60,12 @@ export const IndexPageTemplate = ({
   return (
     <React.Fragment>
       <AppParallax mainImage={mainImage}>
-        <Container
-          style={{
-            height: "100%",
-            flexDirection: "column",
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
-          <InnerContainer>
-            <AppParallaxText text={mainImage?.text} />
-          </InnerContainer>
-          <InnerContainer>
-            <CallToAction to="/about-us">{mainImage.callToAction}</CallToAction>
-          </InnerContainer>
-        </Container>
+        <InnerContainer>
+          <AppParallaxText text={mainImage?.text} />
+        </InnerContainer>
+        <InnerContainer>
+          <CallToAction to="/about-us">{mainImage.callToAction}</CallToAction>
+        </InnerContainer>
       </AppParallax>
       <AppTextWithBullets intro={intro} bulletPoints={bulletPoints} />
 

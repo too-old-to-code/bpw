@@ -8,6 +8,7 @@ export const ParallaxImageText = styled.div`
   font-size: 4em;
   font-weight: bold;
   color: rgb(160, 216, 123);
+  position: relative;
   text-shadow: 0px 1px 1px black;
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     font-size: 2.5em;
