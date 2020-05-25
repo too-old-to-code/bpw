@@ -2,10 +2,18 @@
 templateKey: our-clients
 mainImage:
   text:
-    - words: Providing unrivalled service to our valued clients for over 35 years
-      animate: true
+    - words: "Providing unrivalled  "
+      animate: false
       animation: fade
-      color: purple
+      color: inherit
+    - words: service to our valued
+      animation: fade
+      animate: false
+      color: inherit
+    - words: clients for over 35 years
+      animate: false
+      animation: fade
+      color: inherit
   desktop:
     image: /img/cars.jpg
     xPos: 70
