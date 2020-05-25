@@ -305,6 +305,7 @@ collections:
               widget: object,
               fields:
                 [
+                  { label: Section text, name: sectionText, widget: string },
                   { label: Heading, name: heading, widget: string },
                   {
                     label: Text,
