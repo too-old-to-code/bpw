@@ -27,7 +27,6 @@ const InnerContainer = styled.div`
   @media (max-width: ${({ theme }) => theme?.bpoints[0]}px) {
     justify-content: center;
     align-items: flex-end;
-    // padding-bottom: 50px;
   }
 `
 
