@@ -53,4 +53,11 @@ ourTeam:
         based. Our ongoing dedication to the Investors in People Standard is
         evidence of our commitment to all our staff and clients, as well as our
         goal of continuous improvement in everything we do.
+  sectionText: Our people offer unrivalled service and knowledge
+profiles:
+  - image: /img/wiggins-thumb.jpg
+    name: Paul Wiggins ACII
+    position: Managing Director
+    blurb: Paul is responsible for all aspects of managing the business, on both
+      strategic and operational levels.
 ---
