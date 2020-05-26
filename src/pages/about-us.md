@@ -53,11 +53,20 @@ ourTeam:
         based. Our ongoing dedication to the Investors in People Standard is
         evidence of our commitment to all our staff and clients, as well as our
         goal of continuous improvement in everything we do.
-  sectionText: Our people offer unrivalled service and knowledge
+  sectionText: Our people offer unrivaled service and knowledge
 profiles:
   - image: /img/wiggins-thumb.jpg
     name: Paul Wiggins ACII
     position: Managing Director
     blurb: Paul is responsible for all aspects of managing the business, on both
       strategic and operational levels.
+  - image: /img/evans-thumb.jpg
+    name: Jason Evans
+    blurb: With over 30 years' experience in the industry, Jason has an extensive
+      understanding of the commercial insurance market.
+    position: Director
+  - image: /img/obrien-thumb.jpg
+    name: Ian O'Brien Cert CII
+    blurb: Ian joined bpw in 2009 and has been a director since 2015.
+    position: Director
 ---
