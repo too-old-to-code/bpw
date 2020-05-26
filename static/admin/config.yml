@@ -445,7 +445,7 @@ collections:
             }
       #########################################
       #                                       #
-      #            OUR ClIENTS PAGE          #
+      #            OUR ClIENTS PAGE           #
       #                                       #
       #########################################
       - file: "src/pages/our-clients.md"
