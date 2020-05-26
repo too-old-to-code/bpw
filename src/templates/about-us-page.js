@@ -37,6 +37,7 @@ const Profile = ({ profile }) => {
         padding-bottom: 0px;
         background: var(--not-quite-white);
         align-self: stretch;
+        margin: 0 30px;
         margin-top: 80px;
         margin-bottom: 50px;
         @media (max-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
@@ -172,7 +173,7 @@ export const AboutUsPageTemplate = ({
         direction="row"
         justify="space-around"
         // verticalPad="80"
-        style={{ background: "#06426a" }}
+        style={{ background: "#06426a", flexWrap: "wrap" }}
       >
         {profiles.map(profile => (
           <Profile profile={profile} />
