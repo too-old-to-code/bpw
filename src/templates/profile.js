@@ -27,25 +27,64 @@ const ProfilePage = ({ data }) => {
 //     }
 //   }
 // `
-export const PageQuery = graphql`
-  query ProfilePageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
+// export const PageQuery = graphql`
+//   query ProfilePageTemplate {
+//     markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
+//       frontmatter {
+//         profiles {
+//           name
+//           blurb
+//           position
+//           image {
+//             childImageSharp {
+//               fluid(maxWidth: 300) {
+//                 ...GatsbyImageSharpFluid
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
+
+export const pageQuery = graphql`
+  query ProfileByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      id
       frontmatter {
-        profiles {
-          name
-          blurb
-          position
-          image {
-            childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
+        blurb
+        name
+        position
       }
     }
   }
 `
 
 export default ProfilePage
+
+// query MyQuery($id: String!) {
+//   markdownRemark(id: {eq: $id}) {
+//     frontmatter {
+//       name
+//       profiles {
+//         name
+//       }
+//     }
+//   }
+//   allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "profile" } } }) {
+//     edges {
+//       node {
+//         fields {
+//           slug
+//         }
+//         frontmatter {
+//           blurb
+//           name
+//           position
+
+//         }
+//       }
+//     }
+//   }
+// }
