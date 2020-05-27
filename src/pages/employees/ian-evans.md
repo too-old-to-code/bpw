@@ -1,18 +1,12 @@
 ---
 templateKey: profile
-image: /img/evans-thumb.jpg
-name: Ian Evans
-blurb: Here is a fantastic blurb
+image: /img/jasonpage.jpg
+name: Jason Evans
+blurb: With over 30 years' experience in the industry, Jason has an extensive
+  understanding of the commercial insurance market.
 position: Director
 thumbnail: /img/evans-thumb.jpg
 ---
-### **This should be the ticket**
-
-1. I think this will work
-2. I think it's great
-
-`This is some code`
-
-*This is italic*
-
-![Wiggs](/img/wiggins-thumb.jpg "This is great")
+With over 30 years' experience in the industry, Jason has an extensive understanding of the commercial insurance market.\
+\
+Jason’s clients include commercial property portfolios, large motor fleets and high-risk liability risks.
