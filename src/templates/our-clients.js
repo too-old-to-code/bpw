@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
-import { Container } from "react-grid-system"
 import { PaddedBox } from "@custom-lib"
 import { AppParallaxText } from "../components/parallax-image-text"
 import { AppParallax } from "../components/app-parallax"

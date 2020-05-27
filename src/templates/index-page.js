@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import { AppParallaxText } from "../components/parallax-image-text"
-import { Container } from "react-grid-system"
 import {
   CheckerDuo,
   PopIn,

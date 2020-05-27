@@ -2,11 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import { AppParallaxText } from "../components/parallax-image-text"
-import { Container } from "react-grid-system"
 import { PaddedBox, FlexBox, Heading, PreviewSafeImage } from "@custom-lib"
 import { AppParallax } from "../components/app-parallax"
 import { AppTextBox } from "../components/app-text-box"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 const InnerContainer = styled.div`
   display: flex;
@@ -172,7 +171,6 @@ export const AboutUsPageTemplate = ({
         fontSize="1em"
         direction="row"
         justify="space-around"
-        // verticalPad="80"
         style={{ background: "#06426a", flexWrap: "wrap" }}
       >
         {profiles.map(profile => (

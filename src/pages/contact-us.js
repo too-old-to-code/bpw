@@ -1,9 +1,11 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import { Row, Col } from "react-grid-system"
-import { PaddedBox, FlexBox } from "@custom-lib"
+import { FlexBox } from "@custom-lib"
 import { FaPhoneSquareAlt } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
+import { graphql } from "gatsby"
+
 const StyledForm = styled.form`
   max-width: 600px;
   padding: 50px;

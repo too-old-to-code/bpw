@@ -52,9 +52,9 @@ export const Footer = ({ image, siteData }) => {
         <Hidden xs>
           <Col sm={6}>
             <FooterBlock>
-              {siteData.badges.map(badge => {
+              {siteData.badges.map((badge, index) => {
                 return (
-                  <div style={{ width: "150px" }}>
+                  <div style={{ width: "150px" }} key={index}>
                     <Img fluid={badge.childImageSharp.fluid} />
                   </div>
                 )

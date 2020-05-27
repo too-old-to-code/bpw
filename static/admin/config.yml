@@ -6,6 +6,22 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "employee"
+    label: "Employee"
+    folder: "src/pages/employees"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "blog-post",
+        }
+      - { label: Image, name: image, widget: image }
+      - { label: Name, name: name, widget: string }
+      - { label: Blurb, name: blurb, widget: text }
+      - { label: Position, name: position, widget: string }
   - name: "settings"
     label: "Settings"
     files:
