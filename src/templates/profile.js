@@ -60,7 +60,6 @@ export const pageQuery = graphql`
         blurb
         name
         position
-        description
       }
     }
   }
