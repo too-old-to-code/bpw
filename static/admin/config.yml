@@ -23,6 +23,8 @@ collections:
       - { label: Name, name: name, widget: string }
       - { label: Blurb, name: blurb, widget: text }
       - { label: Position, name: position, widget: string }
+      - { label: Thumbnail, name: thumbnail, widget: image }
+      - { label: Description, name: description, widget: markdown }
   - name: "settings"
     label: "Settings"
     files:
