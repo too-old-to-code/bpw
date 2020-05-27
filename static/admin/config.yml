@@ -7,6 +7,7 @@ public_folder: /img
 
 collections:
   - name: "employee"
+    identifier_field: name
     label: "Employee"
     folder: "src/pages/employees"
     create: true
@@ -16,7 +17,7 @@ collections:
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "blog-post",
+          default: "profile",
         }
       - { label: Image, name: image, widget: image }
       - { label: Name, name: name, widget: string }
