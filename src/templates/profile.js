@@ -2,9 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 
 const ProfilePage = ({ data }) => {
-  console.log(data)
+  console.log(data.markdownRemark)
+  let test = data.markdownRemark.frontmatter
   return (
     <div>
+      <div>{test.description}</div>
+      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       <h1>Victorious</h1>
       <h1>Victorious</h1>
       <h1>Victorious</h1>
@@ -52,10 +55,12 @@ export const pageQuery = graphql`
   query ProfileByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
+      html
       frontmatter {
         blurb
         name
         position
+        description
       }
     }
   }
