@@ -173,7 +173,12 @@ const Layout = ({ children, pageContext }) => {
         <Scene
           classToggle="second-color"
           triggerHook="0"
-          offset={window.location.href.includes("employees") ? "0px" : "50px"}
+          offset={
+            typeof window !== "undefined" &&
+            window.location.href.includes("employees")
+              ? "0px"
+              : "50px"
+          }
         >
           {progress => (
             <div>
