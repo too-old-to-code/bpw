@@ -135,6 +135,24 @@ const ProfilePageMobile = ({ data }) => {
         maxWidth="600px"
         style={{ textAlign: "justify" }}
       >
+        <Heading
+          as="h1"
+          css={`
+            color: #06426a;
+            margin: 0;
+            font-size: 1.5em;
+          `}
+        >
+          {data.markdownRemark.frontmatter.name}
+        </Heading>
+        <Heading
+          css={`
+            color: #06426a;
+            margin: 0;
+          `}
+        >
+          {data.markdownRemark.frontmatter.position}
+        </Heading>
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </PaddedBox>
     </FlexBox>

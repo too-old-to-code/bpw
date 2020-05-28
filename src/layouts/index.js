@@ -56,6 +56,7 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   display: block;
+  margin: 15px;
 `
 
 const PAGES = [
@@ -176,7 +177,7 @@ const Layout = ({ children, pageContext }) => {
           offset={
             typeof window !== "undefined" &&
             window.location.href.includes("employees")
-              ? "0px"
+              ? "-50px"
               : "50px"
           }
         >
