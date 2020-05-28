@@ -24,9 +24,31 @@ import styled from "styled-components"
 const NavItemInner = styled.div`
   text-align: center;
   padding: 2px 4px;
-  border-bottom: 3px transparent solid;
-  .active-link & {
+  // border-bottom: 3px transparent solid;
+  position: relative;
+  z-index: 1;
+  // .active-link & {
+  //   border-bottom: 3px solid #0a98d8;
+  // }
+  &:after {
+    pointer-events: none;
+    content: "";
+    z-index: 0;
+    position: absolute;
+    bottom: -5px;
+    transform: translateY(7px);
+    opacity: 0;
+    left: 0;
+    right: 0;
     border-bottom: 3px solid #0a98d8;
+    transition: all 0.3s;
+  }
+  &:hover:after,
+  .active-link &:after {
+    pointer-events: none;
+    content: "";
+    opacity: 1;
+    transform: translateY(0);
   }
 `
 
@@ -75,7 +97,8 @@ MobileMenuWithContent.propTypes = {
   isOpen: PropTypes.bool,
 }
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageContext }) => {
+  console.log(pageContext)
   const [burgerMenuIsActive, burgerMenuToggleActive] = useState(false)
   const openMenu = useRef()
 
@@ -147,7 +170,11 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Controller>
-        <Scene classToggle="second-color" triggerHook="0" offset="50px">
+        <Scene
+          classToggle="second-color"
+          triggerHook="0"
+          offset={window.location.href.includes("employees") ? "0px" : "50px"}
+        >
           {progress => (
             <div>
               <Navbar

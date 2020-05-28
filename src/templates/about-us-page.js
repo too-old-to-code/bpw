@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { AppParallaxText } from "../components/parallax-image-text"
 import { PaddedBox, FlexBox, Heading, PreviewSafeImage } from "@custom-lib"
 import { AppParallax } from "../components/app-parallax"
@@ -41,11 +41,13 @@ const Profile = ({ profile }) => {
         margin-bottom: 50px;
         @media (max-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
           align-self: inherit;
+          margin-left: 0;
+          margin-right: 0;
         }
       `}
     >
       <div
-        key={profile.name}
+        key={profile.employee.name}
         css={`
           position: relative;
           top: -80px;
@@ -58,7 +60,6 @@ const Profile = ({ profile }) => {
       >
         <div
           css={`
-            filter: grayscale(100%);
             width: 200px;
             border-radius: 50%;
             border: solid 2px var(--not-quite-white);
@@ -70,8 +71,8 @@ const Profile = ({ profile }) => {
           `}
         >
           <PreviewSafeImage
-            image={profile.image}
-            alt={profile.name}
+            image={profile.employee.thumbnail}
+            alt={profile.employee.name}
             position={[50, 50]}
           />
         </div>
@@ -91,7 +92,7 @@ const Profile = ({ profile }) => {
             color: var(--not-quite-black);
           `}
         >
-          {profile.name}
+          {profile.employee.name}
         </p>
         <p
           css={`
@@ -100,7 +101,7 @@ const Profile = ({ profile }) => {
             margin: 3px;
           `}
         >
-          {profile.position}
+          {profile.employee.position}
         </p>
         <div>
           <p
@@ -108,7 +109,7 @@ const Profile = ({ profile }) => {
               color: var(--not-quite-black);
             `}
           >
-            {profile.blurb}
+            {profile.employee.blurb}
           </p>
         </div>
       </div>
@@ -118,21 +119,23 @@ const Profile = ({ profile }) => {
           position: absolute;
           left: 0;
           right: 0;
-          bottom: -20px;
+          bottom: -10px;
           text-align: center;
         `}
       >
-        <button
+        <Link
+          to={profile.slug}
           css={`
             background: #0a99d8;
             color: white;
             padding: 15px;
             border: none;
             margin: auto;
+            text-decoration: none;
           `}
         >
           Read more
-        </button>
+        </Link>
       </div>
     </div>
   )
@@ -143,6 +146,7 @@ export const AboutUsPageTemplate = ({
   intro,
   ourTeam,
   profiles,
+  employees,
 }) => {
   return (
     <React.Fragment>
@@ -173,8 +177,8 @@ export const AboutUsPageTemplate = ({
         justify="space-around"
         style={{ background: "#06426a", flexWrap: "wrap" }}
       >
-        {profiles.map(profile => (
-          <Profile profile={profile} />
+        {employees.map(employee => (
+          <Profile profile={employee} />
         ))}
       </ProfileFlexBox>
     </React.Fragment>
@@ -183,6 +187,12 @@ export const AboutUsPageTemplate = ({
 
 const AboutUsPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
+  const { edges } = data.allMarkdownRemark
+  const employees = edges.map(edge => ({
+    slug: edge.node.fields.slug,
+    employee: edge.node.frontmatter,
+  }))
+  console.log(employees)
 
   return (
     <AboutUsPageTemplate
@@ -190,6 +200,7 @@ const AboutUsPage = ({ data }) => {
       intro={frontmatter.introduction}
       ourTeam={frontmatter.ourTeam}
       profiles={frontmatter.profiles}
+      employees={employees}
     />
   )
 }
@@ -198,24 +209,33 @@ export default AboutUsPage
 
 export const PageQuery = graphql`
   query AboutUsPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
-      ...IntroFields
-      ...MainImageFields
-      ...OurTeamFields
-      frontmatter {
-        profiles {
-          name
-          blurb
-          position
-          image {
-            childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
+    allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "profile" } } }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            blurb
+            name
+            position
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
       }
+    }
+    markdownRemark(frontmatter: { templateKey: { eq: "about-us-page" } }) {
+      ...IntroFields
+      ...MainImageFields
+      ...OurTeamFields
     }
   }
 `

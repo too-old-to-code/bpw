@@ -58,7 +58,7 @@ const PlainLink = styled.a`
 `
 
 const MainArea = styled.main`
-  padding-top: 80px;
+  padding-top: ${({ theme }) => theme?.navbar?.height};
 `
 
 const StyledLabel = styled.label`

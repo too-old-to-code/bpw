@@ -335,18 +335,6 @@ collections:
                   },
                 ],
             }
-          - {
-              label: Profiles,
-              name: profiles,
-              widget: list,
-              fields:
-                [
-                  { label: Image, name: image, widget: image },
-                  { label: Name, name: name, widget: string },
-                  { label: Blurb, name: blurb, widget: text },
-                  { label: Position, name: position, widget: string },
-                ],
-            }
       #########################################
       #                                       #
       #            OUR SERVICES PAGE          #

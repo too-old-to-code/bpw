@@ -98,7 +98,7 @@ export const theme = {
   },
   navbarAlt: {
     textColor: "#303030",
-    hoverTextColor: "#93dfff",
+    hoverTextColor: "inherit",
     background: "#FCFAFF",
     hoverBackground: null,
     backgroundSelected: "#2dbeff",
@@ -107,7 +107,7 @@ export const theme = {
   navbar: {
     position: "fixed",
     textColor: "#FCFAFF",
-    hoverTextColor: "#93dfff",
+    hoverTextColor: "inherit",
     // background: "linear-gradient(rgba(0,0,0,.7),transparent)",
     background: "rgba(0,0,0,.2)",
     hoverBackground: null,
