@@ -1,7 +1,7 @@
 ---
 templateKey: profile
 image: /img/ianpage.jpg
-name: Ian O'Brien
+name: Ian O'Brien Cert CII
 blurb: Ian joined bpw in 2009 and has been a director since 2015.
 position: Director
 thumbnail: /img/obrien-thumb.jpg
