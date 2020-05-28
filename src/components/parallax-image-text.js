@@ -30,7 +30,9 @@ export const AppParallaxText = ({ text }) => {
               <div style={{ color }}>{words}</div>
             </Tween>
           ) : (
-            <div style={{ color }}>{words}</div>
+            <div key={words} style={{ color }}>
+              {words}
+            </div>
           )
         })}
       </Timeline>

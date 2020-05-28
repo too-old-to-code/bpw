@@ -145,7 +145,6 @@ export const AboutUsPageTemplate = ({
   mainImage,
   intro,
   ourTeam,
-  profiles,
   employees,
 }) => {
   return (
@@ -178,7 +177,7 @@ export const AboutUsPageTemplate = ({
         style={{ background: "#06426a", flexWrap: "wrap" }}
       >
         {employees.map(employee => (
-          <Profile profile={employee} />
+          <Profile profile={employee} key={employee.employee.name} />
         ))}
       </ProfileFlexBox>
     </React.Fragment>
@@ -199,7 +198,6 @@ const AboutUsPage = ({ data }) => {
       mainImage={frontmatter.mainImage}
       intro={frontmatter.introduction}
       ourTeam={frontmatter.ourTeam}
-      profiles={frontmatter.profiles}
       employees={employees}
     />
   )

@@ -70,9 +70,8 @@ export const IndexPageTemplate = ({
       {categoryPitches &&
         categoryPitches.map((pitch, index) => {
           return (
-            <MarginOnMobile>
+            <MarginOnMobile key={pitch.title}>
               <CheckerDuo
-                key={pitch.title}
                 image={
                   <PreviewSafeImage
                     image={pitch.image}

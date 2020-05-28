@@ -56,7 +56,6 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   display: block;
-  margin: 15px;
 `
 
 const PAGES = [
@@ -76,7 +75,7 @@ const MobileMenuWithContent = ({ isOpen }) => {
   return (
     <MobileMenu isOpen={isOpen}>
       {PAGES.filter(page => page.mobile).map(page => (
-        <MenuLink key={page.path} to={page.path}>
+        <MenuLink key={page.path} to={page.path} style={{ margin: "15px" }}>
           {page.name}
         </MenuLink>
       ))}
@@ -174,12 +173,7 @@ const Layout = ({ children, pageContext }) => {
         <Scene
           classToggle="second-color"
           triggerHook="0"
-          offset={
-            typeof window !== "undefined" &&
-            window.location.href.includes("employees")
-              ? "-50px"
-              : "50px"
-          }
+          offset={pageContext.special ? "-50px" : "50px"}
         >
           {progress => (
             <div>

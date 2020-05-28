@@ -53,6 +53,9 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach(edge => {
       if (edge.node.frontmatter.templateKey === "site-data") return
       const id = edge.node.id
+      const pagesWithoutBicolorNavbar = new RegExp(/employees/)
+      console.log(edge.node.fields.slug)
+      console.log(pagesWithoutBicolorNavbar.test(edge.node.fields.slug))
 
       createPage({
         path: edge.node.fields.slug,
@@ -63,20 +66,22 @@ exports.createPages = ({ actions, graphql }) => {
         // additional data can be passed via context
         context: {
           id,
-          special: edge.node.fields.slug.includes("employees"),
+          // special: edge.node.fields.slug.includes("employees"),
+          special: pagesWithoutBicolorNavbar.test(edge.node.fields.slug),
         },
       })
     })
   })
 }
 
-// exports.onCreatePage = ({ page, actions }) => {
-//   const { createPage } = actions
-//   if (page.path.match(/employees/)) {
-//     page.context.layout = "special"
-//     createPage(page)
-//   }
-// }
+exports.onCreatePage = ({ page, actions }) => {
+  console.log(page)
+  const { createPage } = actions
+  if (page.path.match(/contact/)) {
+    page.context.special = true
+    createPage(page)
+  }
+}
 // This will create the routes for the templates
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
