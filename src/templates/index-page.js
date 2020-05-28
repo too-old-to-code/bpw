@@ -62,7 +62,7 @@ export const IndexPageTemplate = ({
           <AppParallaxText text={mainImage?.text} />
         </InnerContainer>
         <InnerContainer>
-          <CallToAction to="/about-us">{mainImage.callToAction}</CallToAction>
+          <CallToAction to="/contact-us">{mainImage.callToAction}</CallToAction>
         </InnerContainer>
       </AppParallax>
       <AppTextWithBullets intro={intro} bulletPoints={bulletPoints} />
