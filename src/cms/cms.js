@@ -40,7 +40,7 @@ CMS.registerPreviewTemplate("about-us-page", props => (
   </StylesheetInjector>
 ))
 
-CMS.registerPreviewTemplate("our-services", props => (
+CMS.registerPreviewTemplate("our-services-page", props => (
   <StylesheetInjector>
     <OurServicesPagePreview {...props} />
   </StylesheetInjector>

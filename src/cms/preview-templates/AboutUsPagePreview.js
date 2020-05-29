@@ -4,6 +4,7 @@ import { AboutUsPageTemplate } from "../../templates/about-us-page"
 
 const AboutUsPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(["data"]).toJS()
+  console.log(data)
   const { edges } = data.allMarkdownRemark
   const employees = edges.map(edge => ({
     slug: edge.node.fields.slug,
