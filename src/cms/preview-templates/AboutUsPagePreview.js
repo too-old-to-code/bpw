@@ -4,11 +4,19 @@ import { AboutUsPageTemplate } from "../../templates/about-us-page"
 
 const AboutUsPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(["data"]).toJS()
+  const { edges } = data.allMarkdownRemark
+  const employees = edges.map(edge => ({
+    slug: edge.node.fields.slug,
+    employee: edge.node.frontmatter,
+  }))
+
   if (data) {
     return (
       <AboutUsPageTemplate
         mainImage={data.mainImage}
         intro={data.introduction}
+        ourTeam={data.ourTeam}
+        employees={employees}
       />
     )
   } else {

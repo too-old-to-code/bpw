@@ -42,6 +42,15 @@ module.exports = {
         name: "site-data",
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#0a99d8`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
 
     // alias the custom component lib for easier importing
     {

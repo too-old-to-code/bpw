@@ -1,5 +1,6 @@
 require("normalize.css")
 require("typeface-teko")
+require("nprogress/nprogress.css")
 const { theme } = require("./src/theme")
 const { setConfiguration } = require("react-grid-system")
 
