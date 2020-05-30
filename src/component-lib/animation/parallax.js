@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components"
 import { Controller, Scene } from "react-scrollmagic"
 import { Tween, Timeline } from "react-gsap"
 import { Overlay } from "../structure"
+import { Only } from "react-only"
 
 const ParallaxContainer = styled.div`
   overflow: hidden;
@@ -33,8 +34,7 @@ const ImageWrapper = styled.div`
 // At mobiles sizes this effect is disabled for performance reasons.
 export const Parallax = withTheme(props => (
   <React.Fragment>
-    {typeof window !== "undefined" &&
-    window.innerWidth > props.theme.bpoints[0] ? (
+    <Only on="sm md lg xl">
       <ParallaxContainer>
         <Controller>
           <Scene duration="200%" triggerHook={props.triggerHook}>
@@ -47,14 +47,15 @@ export const Parallax = withTheme(props => (
         </Controller>
         <Overlay>{props.content}</Overlay>
       </ParallaxContainer>
-    ) : (
+    </Only>
+    <Only on="xs">
       <ParallaxContainer>
         <ParallaxPanel height={props.mobileHeight}>
           <ImageWrapper>{props.mobileImage}</ImageWrapper>
         </ParallaxPanel>
         <Overlay>{props.content}</Overlay>
       </ParallaxContainer>
-    )}
+    </Only>
   </React.Fragment>
 ))
 

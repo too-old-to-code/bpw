@@ -2,7 +2,6 @@ import "../styles/global.scss"
 import React, { useState, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
-
 import { Navbar, NavbarLayoutMulti, NavbarItem, MobileMenu } from "@custom-lib"
 
 import { Controller, Scene } from "react-scrollmagic"
@@ -11,7 +10,7 @@ import Img from "gatsby-image"
 import { Footer } from "../components/footer"
 import { ThemeProvider } from "styled-components"
 import { theme } from "../theme.js"
-
+import { ScreenClassProvider } from "react-grid-system"
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -169,48 +168,50 @@ const Layout = ({ children, pageContext }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Controller>
-        <Scene
-          classToggle="second-color"
-          triggerHook="0"
-          offset={pageContext.special ? "-50px" : "50px"}
-        >
-          {progress => (
-            <div>
-              <Navbar
-                style={{
-                  boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.125)",
-                  letterSpacing: "1px",
-                  paddingRight: "30px",
-                  fontSize: "1em",
-                }}
-                burgerMenuStyle="spin"
-                burgerMenuIsActive={burgerMenuIsActive}
-                toggleMenu={() => burgerMenuToggleActive(!burgerMenuIsActive)}
-              >
-                <NavbarLayoutMulti
-                  itemsPosition="right"
-                  logoPosition="left"
-                  logo={
-                    <Link to="/">
-                      <NavbarItem logo>
-                        <Logo data={data} progress={progress} />
-                      </NavbarItem>
-                    </Link>
-                  }
-                  mobileMenu={
-                    <MobileMenuWithContent isOpen={burgerMenuIsActive} />
-                  }
+      <ScreenClassProvider>
+        <Controller>
+          <Scene
+            classToggle="second-color"
+            triggerHook="0"
+            offset={pageContext.special ? "-50px" : "50px"}
+          >
+            {progress => (
+              <div>
+                <Navbar
+                  style={{
+                    boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.125)",
+                    letterSpacing: "1px",
+                    paddingRight: "30px",
+                    fontSize: "1em",
+                  }}
+                  burgerMenuStyle="spin"
+                  burgerMenuIsActive={burgerMenuIsActive}
+                  toggleMenu={() => burgerMenuToggleActive(!burgerMenuIsActive)}
                 >
-                  {navbarMenuContent()}
-                </NavbarLayoutMulti>
-              </Navbar>
-            </div>
-          )}
-        </Scene>
-      </Controller>
-      {children}
-      <Footer siteData={data.siteData.frontmatter} />
+                  <NavbarLayoutMulti
+                    itemsPosition="right"
+                    logoPosition="left"
+                    logo={
+                      <Link to="/">
+                        <NavbarItem logo>
+                          <Logo data={data} progress={progress} />
+                        </NavbarItem>
+                      </Link>
+                    }
+                    mobileMenu={
+                      <MobileMenuWithContent isOpen={burgerMenuIsActive} />
+                    }
+                  >
+                    {navbarMenuContent()}
+                  </NavbarLayoutMulti>
+                </Navbar>
+              </div>
+            )}
+          </Scene>
+        </Controller>
+        {children}
+        <Footer siteData={data.siteData.frontmatter} />
+      </ScreenClassProvider>
     </ThemeProvider>
   )
 }
