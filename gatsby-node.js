@@ -54,8 +54,6 @@ exports.createPages = ({ actions, graphql }) => {
       if (edge.node.frontmatter.templateKey === "site-data") return
       const id = edge.node.id
       const pagesWithoutBicolorNavbar = new RegExp(/employees/)
-      console.log(edge.node.fields.slug)
-      console.log(pagesWithoutBicolorNavbar.test(edge.node.fields.slug))
 
       createPage({
         path: edge.node.fields.slug,
@@ -75,7 +73,6 @@ exports.createPages = ({ actions, graphql }) => {
 }
 
 exports.onCreatePage = ({ page, actions }) => {
-  console.log(page)
   const { createPage } = actions
   if (page.path.match(/contact/)) {
     page.context.special = true

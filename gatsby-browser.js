@@ -9,5 +9,3 @@ setConfiguration({
   gridColumns: 12,
   breakpoints: theme.bpoints,
 })
-
-console.log(theme)
