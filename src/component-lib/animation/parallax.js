@@ -4,7 +4,6 @@ import styled, { withTheme } from "styled-components"
 import { Controller, Scene } from "react-scrollmagic"
 import { Tween, Timeline } from "react-gsap"
 import { Overlay } from "../structure"
-import { Only } from "react-only"
 
 const ParallaxContainer = styled.div`
   overflow: hidden;
